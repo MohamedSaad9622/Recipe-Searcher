@@ -58,13 +58,37 @@
 			children = (
 				04CDB92527BFC9F800565DCD /* AppDelegate.swift */,
 				04CDB92727BFC9F800565DCD /* SceneDelegate.swift */,
-				04CDB92927BFC9F800565DCD /* ViewController.swift */,
-				04CDB92B27BFC9F800565DCD /* Main.storyboard */,
+				04CDB93927BFEC7B00565DCD /* Model */,
+				04CDB93B27BFEC9800565DCD /* View */,
+				04CDB93A27BFEC8800565DCD /* Controller */,
 				04CDB92E27BFC9FB00565DCD /* Assets.xcassets */,
-				04CDB93027BFC9FB00565DCD /* LaunchScreen.storyboard */,
 				04CDB93327BFC9FB00565DCD /* Info.plist */,
 			);
 			path = "Recipe Searcher";
+			sourceTree = "<group>";
+		};
+		04CDB93927BFEC7B00565DCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04CDB93A27BFEC8800565DCD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB92927BFC9F800565DCD /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04CDB93B27BFEC9800565DCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB93027BFC9FB00565DCD /* LaunchScreen.storyboard */,
+				04CDB92B27BFC9F800565DCD /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
