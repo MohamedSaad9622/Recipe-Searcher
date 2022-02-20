@@ -13,12 +13,13 @@ class RecipeSearch_ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    let recipes: [String] = ["mohamed","Amin"]
-    let constant = Constants.shared
-    var searchText: String = ""
     
+    let constant = Constants.shared
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        // to register custom cell for tableView
+        tableView.register(UINib(nibName: constant.tableViewCell_Name, bundle: nil), forCellReuseIdentifier: constant.tableViewCell_Identifier)
         
         searchBar.delegate = self
         tableView.delegate = self
@@ -35,23 +36,23 @@ extension RecipeSearch_ViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let recipe = constant.recipeList[indexPath.row].recipe
-        let cell = tableView.dequeueReusableCell(withIdentifier: constant.tableViewCell_Identifier, for: indexPath)
-        let title = recipe.label + "\n\(recipe.source)"
-        cell.textLabel?.text = title
-        var healthLabels : String = ""
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: constant.tableViewCell_Identifier, for: indexPath) as! Recipe_TableViewCell
+        
+        cell.recipeTitle.text = recipe.label
+        cell.recipeSource.text = recipe.source
+        // to show all health labels in only one label
         for lines in recipe.healthLabels {
-            healthLabels +=  lines
+            cell.recipeHealthLabels.text! +=  lines
         }
-        cell.detailTextLabel?.text = healthLabels
+        
+        // to show the image from its url
         let url = constant.recipeList[indexPath.row].recipe.image
         AF.request(url).responseImage { response in
-//            debugPrint(response)
-//            debugPrint(response.result)
-
             if case .success(let image) = response.result {
-                print("image downloaded: \(image)")
-                cell.imageView?.image = image
+                cell.recipeImage.image = image
             }
         }
         return cell

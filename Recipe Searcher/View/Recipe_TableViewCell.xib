@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Recipe_identifier" rowHeight="127" id="KGk-i7-Jjw" customClass="Recipe_TableViewCell" customModule="Recipe_Searcher" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="371" height="127"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-T6-bvh">
+                        <rect key="frame" x="2" y="0.0" width="367" height="576"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Recipes-image" translatesAutoresizingMaskIntoConstraints="NO" id="WNR-9f-Skz">
+                                <rect key="frame" x="0.0" y="0.0" width="182.5" height="576"/>
+                                <color key="backgroundColor" red="0.97680455450000003" green="0.96710909119999999" blue="0.38440968980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WNR-9f-Skz" secondAttribute="height" multiplier="16:10" id="jvA-Sk-qCS"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="caj-mb-DTY">
+                                <rect key="frame" x="184.5" y="0.0" width="182.5" height="576"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RecipeTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHj-9g-qbv">
+                                        <rect key="frame" x="0.0" y="0.0" width="182.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipeSource" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z2-XM-3zU">
+                                        <rect key="frame" x="0.0" y="280" width="182.5" height="23"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe’s health labels" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHg-2c-ju5">
+                                        <rect key="frame" x="0.0" y="559" width="182.5" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TGy-T6-bvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KJ0-TR-T5h"/>
+                    <constraint firstItem="TGy-T6-bvh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="KSE-Xk-D08"/>
+                    <constraint firstItem="TGy-T6-bvh" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-5" id="U9c-ip-eeZ"/>
+                    <constraint firstAttribute="trailing" secondItem="TGy-T6-bvh" secondAttribute="trailing" constant="2" id="Uw5-XZ-1bz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="recipeHealthLabels" destination="yHg-2c-ju5" id="dIm-To-IB8"/>
+                <outlet property="recipeImage" destination="WNR-9f-Skz" id="nXa-9u-K3t"/>
+                <outlet property="recipeSource" destination="3z2-XM-3zU" id="UZk-tc-mnb"/>
+                <outlet property="recipeTitle" destination="lHj-9g-qbv" id="lJ8-xg-AXy"/>
+            </connections>
+            <point key="canvasLocation" x="174.63768115942031" y="86.71875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Recipes-image" width="1024" height="576"/>
+    </resources>
+</document>
