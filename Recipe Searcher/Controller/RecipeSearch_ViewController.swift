@@ -58,6 +58,14 @@ extension RecipeSearch_ViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        constant.recipeIndex = indexPath.row
+        // to open RecipeDetails_ViewController programmatically
+        let storyBoard = UIStoryboard(name: constant.RecipeDetails_storyboard, bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: constant.RecipeDetails_Id) as! RecipeDetails_ViewController
+        navigationController?.pushViewController(newViewController, animated: false)
+    }
+    
     
 }
 
