@@ -9,6 +9,8 @@ import Foundation
 
 struct RecipesData : Codable {
     let hits : [Hit]
+    let more : Bool
+    let count : Int
 }
 
 struct Hit : Codable{

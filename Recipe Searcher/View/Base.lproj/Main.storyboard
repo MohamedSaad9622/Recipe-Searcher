@@ -16,6 +16,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GR1-cT-Ona">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.12629426951287276" green="0.3627311629478378" blue="0.10145096251217582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="A0J-s2-oG1"/>
@@ -33,106 +36,161 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9RO-cC-JtF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="search" smartDashesType="no" smartQuotesType="no" textContentType="name"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aki-ty-wdx">
-                                <rect key="frame" x="0.0" y="192" width="414" height="704"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <sections/>
-                            </tableView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ow6-6f-e1X">
-                                <rect key="frame" x="0.0" y="139" width="414" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dtl-fx-G0h">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ThV-8f-2hc">
+                                    <searchBar contentMode="redraw" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="9RO-cC-JtF">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <color key="backgroundColor" red="0.97680455450000003" green="0.95481186890000003" blue="0.2027786255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="BYi-BM-VGt"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="search" smartDashesType="no" smartQuotesType="no" textContentType="name"/>
+                                    </searchBar>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3j-bQ-hLg">
+                                        <rect key="frame" x="0.0" y="53" width="414" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7S-Gs-Rlv">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="CII-GW-YKQ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="All"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R65-6z-mYN">
-                                                <rect key="frame" x="104" y="0.0" width="102" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Mb6-dU-cpw"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Low Sugar"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-0C-r4q">
-                                                <rect key="frame" x="208" y="0.0" width="102" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="bsZ-d9-8um"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Keto"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lil-m1-unr">
-                                                <rect key="frame" x="312" y="0.0" width="102" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="DNu-YE-JJL"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Vegan"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLz-pw-e0x">
+                                                <rect key="frame" x="0.0" y="0.0" width="537" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tam-Je-gGu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="66" height="50"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="    ALL">
+                                                            <color key="titleColor" red="0.1262942695" green="0.36273116290000001" blue="0.10145096250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="AllButtonFilter_isPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z0m-uh-kCQ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akx-fy-Krn">
+                                                        <rect key="frame" x="81" y="0.0" width="50" height="50"/>
+                                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="33a-vp-fnJ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orF-vK-u3L">
+                                                        <rect key="frame" x="146" y="0.0" width="114" height="50"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Low Sugar">
+                                                            <color key="titleColor" red="0.1262942695" green="0.36273116290000001" blue="0.10145096250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="lowSugarFilter_isPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wxu-Fr-jfy"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9X-9v-1PL">
+                                                        <rect key="frame" x="275" y="0.0" width="50" height="50"/>
+                                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="IeO-Zy-MIr"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipr-Hh-yp5">
+                                                        <rect key="frame" x="340" y="0.0" width="49" height="50"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Keto">
+                                                            <color key="titleColor" red="0.1262942695" green="0.36273116290000001" blue="0.10145096250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="ketoFilter_isPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TwB-Zo-u0N"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZu-hZ-xr1">
+                                                        <rect key="frame" x="404" y="0.0" width="50" height="50"/>
+                                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="Oya-vw-VdV"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HG-G9-oqi">
+                                                        <rect key="frame" x="469" y="0.0" width="68" height="50"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Vegan">
+                                                            <color key="titleColor" red="0.1262942695" green="0.36273116290000001" blue="0.10145096250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="vegan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fzN-f9-wOX"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" red="0.89380137125651038" green="0.72939351728889978" blue="0.69422968211195368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <constraints>
+                                            <constraint firstItem="uLz-pw-e0x" firstAttribute="trailing" secondItem="G3j-bQ-hLg" secondAttribute="trailing" id="4y1-0w-Vb8"/>
+                                            <constraint firstItem="uLz-pw-e0x" firstAttribute="top" secondItem="G3j-bQ-hLg" secondAttribute="top" id="HRP-J2-nAl"/>
+                                            <constraint firstItem="uLz-pw-e0x" firstAttribute="leading" secondItem="G3j-bQ-hLg" secondAttribute="leading" id="WAs-99-7SY"/>
+                                            <constraint firstAttribute="bottom" secondItem="uLz-pw-e0x" secondAttribute="bottom" id="pp3-NC-xLk"/>
+                                            <constraint firstAttribute="height" constant="50" id="y0h-A0-nXR"/>
+                                        </constraints>
+                                    </scrollView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aki-ty-wdx">
+                                        <rect key="frame" x="0.0" y="106" width="414" height="702"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <sections/>
+                                    </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97680455450000003" green="0.95481186890000003" blue="0.2027786255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ThV-8f-2hc" firstAttribute="centerX" secondItem="Ow6-6f-e1X" secondAttribute="centerX" id="3p5-uQ-lEe"/>
-                                    <constraint firstItem="ThV-8f-2hc" firstAttribute="top" secondItem="Ow6-6f-e1X" secondAttribute="top" id="Fa7-zy-PPR"/>
-                                    <constraint firstItem="ThV-8f-2hc" firstAttribute="trailing" secondItem="Ow6-6f-e1X" secondAttribute="trailing" id="KOV-bs-KVH"/>
-                                    <constraint firstItem="ThV-8f-2hc" firstAttribute="height" secondItem="Ow6-6f-e1X" secondAttribute="height" id="XYh-hj-mO9"/>
-                                    <constraint firstAttribute="height" constant="50" id="dLm-OP-iwX"/>
-                                    <constraint firstItem="ThV-8f-2hc" firstAttribute="leading" secondItem="Ow6-6f-e1X" secondAttribute="leading" id="f1o-VL-sGl"/>
-                                    <constraint firstItem="ThV-8f-2hc" firstAttribute="bottom" secondItem="Ow6-6f-e1X" secondAttribute="bottom" id="oLW-81-PBS"/>
+                                    <constraint firstItem="aki-ty-wdx" firstAttribute="top" secondItem="G3j-bQ-hLg" secondAttribute="bottom" constant="3" id="0py-m6-A7g"/>
+                                    <constraint firstAttribute="bottom" secondItem="aki-ty-wdx" secondAttribute="bottom" id="aRz-mS-qVc"/>
+                                    <constraint firstAttribute="trailing" secondItem="aki-ty-wdx" secondAttribute="trailing" id="qPr-Pf-FZ0"/>
+                                    <constraint firstItem="aki-ty-wdx" firstAttribute="leading" secondItem="dtl-fx-G0h" secondAttribute="leading" id="vUS-yr-Xji"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="Phy-X3-Pyy"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="4M7-VQ-Vrp"/>
-                            </scrollView>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
-                            <constraint firstItem="9RO-cC-JtF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9k7-8x-zvG"/>
-                            <constraint firstItem="Ow6-6f-e1X" firstAttribute="top" secondItem="9RO-cC-JtF" secondAttribute="bottom" id="Hsh-4M-L9M"/>
-                            <constraint firstAttribute="bottom" secondItem="aki-ty-wdx" secondAttribute="bottom" id="JPh-wK-zhM"/>
-                            <constraint firstItem="9RO-cC-JtF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jqt-Ne-EDC"/>
-                            <constraint firstItem="Ow6-6f-e1X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KVL-8e-iJo"/>
-                            <constraint firstItem="aki-ty-wdx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kCW-g4-RRt"/>
-                            <constraint firstItem="Ow6-6f-e1X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lfc-Y8-mIW"/>
-                            <constraint firstItem="aki-ty-wdx" firstAttribute="top" secondItem="Ow6-6f-e1X" secondAttribute="bottom" constant="3" id="ryk-Qx-d2A"/>
-                            <constraint firstItem="9RO-cC-JtF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tz7-gU-Uud"/>
-                            <constraint firstItem="aki-ty-wdx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wQA-50-uHL"/>
+                            <constraint firstAttribute="bottom" secondItem="dtl-fx-G0h" secondAttribute="bottom" id="Tko-y1-1Kw"/>
+                            <constraint firstItem="dtl-fx-G0h" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iWI-wf-h9o"/>
+                            <constraint firstItem="dtl-fx-G0h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oVE-vj-AzR"/>
+                            <constraint firstItem="dtl-fx-G0h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yVj-zl-Vae"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recipes Search" id="2VV-fd-JDg"/>
                     <connections>
+                        <outlet property="All_FilterButton" destination="tam-Je-gGu" id="HW0-0J-TQJ"/>
+                        <outlet property="ketoFilter" destination="Ipr-Hh-yp5" id="gHA-pW-6Kd"/>
+                        <outlet property="lowSugarFilter" destination="orF-vK-u3L" id="w1c-cG-4oP"/>
+                        <outlet property="scrollView" destination="G3j-bQ-hLg" id="lTD-Lq-IiV"/>
                         <outlet property="searchBar" destination="9RO-cC-JtF" id="srT-bH-Ef6"/>
                         <outlet property="tableView" destination="aki-ty-wdx" id="1Yi-Bl-PIQ"/>
+                        <outlet property="veganFilter" destination="7HG-G9-oqi" id="9qT-v6-k90"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="790" y="-30"/>
+            <point key="canvasLocation" x="680" y="-30"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,34 +19,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-T6-bvh">
-                        <rect key="frame" x="2" y="0.0" width="367" height="576"/>
+                        <rect key="frame" x="2" y="0.0" width="367" height="122"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Recipes-image" translatesAutoresizingMaskIntoConstraints="NO" id="WNR-9f-Skz">
-                                <rect key="frame" x="0.0" y="0.0" width="182.5" height="576"/>
+                                <rect key="frame" x="0.0" y="0.0" width="182.5" height="122"/>
                                 <color key="backgroundColor" red="0.97680455450000003" green="0.96710909119999999" blue="0.38440968980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="WNR-9f-Skz" secondAttribute="height" multiplier="16:10" id="jvA-Sk-qCS"/>
+                                    <constraint firstAttribute="width" secondItem="WNR-9f-Skz" secondAttribute="height" multiplier="16:10" priority="999" identifier="a1" id="jvA-Sk-qCS"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="caj-mb-DTY">
-                                <rect key="frame" x="184.5" y="0.0" width="182.5" height="576"/>
+                                <rect key="frame" x="184.5" y="0.0" width="182.5" height="122"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RecipeTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHj-9g-qbv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RecipeTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lHj-9g-qbv">
                                         <rect key="frame" x="0.0" y="0.0" width="182.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipeSource" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z2-XM-3zU">
-                                        <rect key="frame" x="0.0" y="280" width="182.5" height="23"/>
+                                        <rect key="frame" x="0.0" y="57" width="182.5" height="23"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="linkColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe’s health labels" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHg-2c-ju5">
-                                        <rect key="frame" x="0.0" y="559" width="182.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHg-2c-ju5">
+                                        <rect key="frame" x="0.0" y="122" width="182.5" height="0.0"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -53,11 +54,12 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemYellowColor"/>
                 <constraints>
-                    <constraint firstItem="TGy-T6-bvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KJ0-TR-T5h"/>
-                    <constraint firstItem="TGy-T6-bvh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="KSE-Xk-D08"/>
-                    <constraint firstItem="TGy-T6-bvh" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-5" id="U9c-ip-eeZ"/>
-                    <constraint firstAttribute="trailing" secondItem="TGy-T6-bvh" secondAttribute="trailing" constant="2" id="Uw5-XZ-1bz"/>
+                    <constraint firstItem="TGy-T6-bvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" identifier="a2" id="KJ0-TR-T5h"/>
+                    <constraint firstItem="TGy-T6-bvh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" identifier="a3" id="KSE-Xk-D08"/>
+                    <constraint firstItem="TGy-T6-bvh" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-5" identifier="a4" id="U9c-ip-eeZ"/>
+                    <constraint firstAttribute="trailing" secondItem="TGy-T6-bvh" secondAttribute="trailing" constant="2" identifier="a5" id="Uw5-XZ-1bz"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -72,5 +74,11 @@
     </objects>
     <resources>
         <image name="Recipes-image" width="1024" height="576"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
