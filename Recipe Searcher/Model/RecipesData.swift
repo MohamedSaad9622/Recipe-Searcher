@@ -9,10 +9,17 @@ import Foundation
 
 struct RecipesData : Codable {
     let hits : [Hit]
-    let more : Bool
-    let count : Int
+    let _links : Links
+//    let more : Bool
+//    let count : Int
 }
-
+struct Links : Codable {
+    let next : Next
+}
+struct Next : Codable {
+    let href : String
+    let title : String
+}
 struct Hit : Codable{
     let recipe : Recipe
 }

@@ -19,25 +19,26 @@ class Constants {
     
     //MARK: - recipes url
     
-    // RecipesList_from is First result index
-    var recipesList_from : Int = 0
-    // RecipeList_to is last result index
-    var recipeList_to : Int = 10
     // recipe Url before add search text
-    let recipeURL : String = "https://api.edamam.com/search?app_id=9cb782c6&app_key=8eb67ee2cdc935077765efdb928656c5&q="
+    let recipeURL : String = "https://api.edamam.com/api/recipes/v2?type=public&app_id=9cb782c6&app_key=8eb67ee2cdc935077765efdb928656c5&q="
 
     // recipe Url after add search text
     var recipeUrl_searchText : String = ""
     
+    var NextRecipesUrl : String = ""
+    
     //MARK: - recipes data
 
     var recipeList = [Hit]()
-    var more_recipes : Bool = false
-    var recipes_Count : Int = 0
     // to send recipe index to RecipeDtails_ViewController to get data there
     var recipeIndex : Int?
-    // to add this filter to url When I scroll to the bottom of the list to load more Recipes have that the same filter
-    var filter_text : String = ""
+    // if search from pagination add to recipesList else reWrite
+    var deleteOrNo : Bool = true
+    
+    // filter text
+    let lowSugar_filter = "&health=low-sugar"
+    let keto_filter = "&health=keto-friendly"
+    let vegan_filter = "&health=vegan"
     
     //MARK: -  messages for Alert view
     

@@ -35,7 +35,6 @@ class RecipeSearch_ViewController: UIViewController {
     
     @IBAction func AllButtonFilter_isPressed(_ sender: UIButton) {
         if searchBar.text != "" {
-            constant.filter_text = ""
             handleSelected_Button(All_FilterButton.tag)
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
@@ -49,47 +48,41 @@ class RecipeSearch_ViewController: UIViewController {
     }
     @IBAction func lowSugarFilter_isPressed(_ sender: UIButton) {
         if searchBar.text != "" {
-            constant.filter_text = "&health=low-sugar"
             handleSelected_Button(lowSugarFilter.tag)
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText + constant.filter_text)
+                updateUI(with: self.constant.recipeUrl_searchText + constant.lowSugar_filter)
             }else{
-                updateUI(with: constant.recipeUrl_searchText + constant.filter_text)
+                updateUI(with: constant.recipeUrl_searchText + constant.lowSugar_filter)
             }
+            print("^^^^^^^^%%%%%%\(constant.recipeUrl_searchText + constant.lowSugar_filter)")
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
         }
     }
     @IBAction func ketoFilter_isPressed(_ sender: UIButton) {
         if searchBar.text != "" {
-            constant.filter_text = "&health=keto"
             handleSelected_Button(ketoFilter.tag)
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText + constant.filter_text)
+                updateUI(with: self.constant.recipeUrl_searchText + constant.keto_filter)
             }else{
-                updateUI(with: constant.recipeUrl_searchText + constant.filter_text)
+                updateUI(with: constant.recipeUrl_searchText + constant.keto_filter)
             }
-            /* because this filter are not allowed for my account as developer
-                this is link to test
-             https://api.edamam.com/search?app_id=9cb782c6&app_key=8eb67ee2cdc935077765efdb928656c5&q=fish&health=keto
-             */
-            handleAlertMessage("The following filters are not allowed for this level: keto")
-            handleSelected_Button(nil)
+            print("^^^^^^^^%%%%%%\(constant.recipeUrl_searchText + constant.keto_filter)")
+
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
         }
     }
     @IBAction func vegan(_ sender: UIButton) {
         if searchBar.text != "" {
-            constant.filter_text = "&health=vegan"
             handleSelected_Button(veganFilter.tag)
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText + constant.filter_text)
+                updateUI(with: self.constant.recipeUrl_searchText + constant.vegan_filter)
             }else{
-                updateUI(with: constant.recipeUrl_searchText + constant.filter_text)
+                updateUI(with: constant.recipeUrl_searchText + constant.vegan_filter)
             }
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
@@ -127,19 +120,13 @@ extension RecipeSearch_ViewController: UITableViewDelegate, UITableViewDataSourc
                 cell.recipeImage.image = image
             }
         }
-        print("^^^^^^^^^^^more = \(constant.more_recipes)")
+
         if indexPath.row == constant.recipeList.count - 1 {
-            print("&&&&&&&&&&&&&&&&pass")
-            if constant.more_recipes {
-                print("Done&&&&&&&&&&&&&&&&pass")
-                constant.recipesList_from = constant.recipeList_to + 1
-                constant.recipeList_to += 20
-                let fromParameter = "&from=\(constant.recipesList_from)"
-                let toParameter = "&to=\(constant.recipeList_to)"
-                let finalUrl = constant.recipeUrl_searchText + fromParameter + toParameter + constant.filter_text
-                updateUI(with: finalUrl)
+            // to add to the recipesList without delete previous recipes in it
+            constant.deleteOrNo = false
+            updateUI(with: constant.NextRecipesUrl)
             }
-        }
+
         return cell
     }
     
@@ -159,6 +146,7 @@ extension RecipeSearch_ViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if var searchVal = searchBar.text {
+//            constant.recipeList.removeAll()
             // to remove selected filter
             handleSelected_Button(nil)
             // to remove space before text
@@ -166,14 +154,11 @@ extension RecipeSearch_ViewController: UISearchBarDelegate{
             // handle empty search bar
             if searchVal.isEmpty {
                 handleAlertMessage(constant.handleEmpty_searchBar)
-                constant.recipeList.removeAll()
                 updateUI(with: nil)
                 searchBar.text = ""
                 }
                 else{
                     constant.recipeUrl_searchText = constant.recipeURL + searchVal
-                    constant.recipesList_from = 0
-                    constant.recipeList_to = 10
                     updateUI(with: constant.recipeUrl_searchText)
                 }
             }
@@ -208,14 +193,13 @@ extension RecipeSearch_ViewController {
     
     func updateUI(with Url : String?) {
         DispatchQueue.main.async {
+            print("$#$#$#$#$#$#$#$\(self.constant.deleteOrNo)")
             if let url = Url{
                 print("*********\(url)")
                 NetworkingManager.shared.performRequest(url)
                 if let error = self.constant.validateError{
                     self.handleAlertMessage(error)
                     self.constant.validateError = nil
-                }else if self.constant.recipes_Count == 0 {
-                    self.handleAlertMessage(self.constant.handleNoRecipes)
                 }
             }
             self.tableView.reloadData()
