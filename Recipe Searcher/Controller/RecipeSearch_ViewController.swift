@@ -26,21 +26,25 @@ class RecipeSearch_ViewController: UIViewController {
         super.viewDidLoad()
         // to register custom cell for tableView
         tableView.register(UINib(nibName: constant.tableViewCell_Name, bundle: nil), forCellReuseIdentifier: constant.tableViewCell_Identifier)
-        scrollView.showsHorizontalScrollIndicator = true
+
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        
+        NetworkingManager.shared.delegate = self
     }
+    
+
+//MARK: - Filter Buttons
     
     @IBAction func AllButtonFilter_isPressed(_ sender: UIButton) {
         if searchBar.text != "" {
             handleSelected_Button(All_FilterButton.tag)
+            // if the user write recipe name in search bar and press filter in this case constant.recipeUrl_searchText is empty so we write this
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText)
+                NetworkingManager.shared.performRequest(self.constant.recipeUrl_searchText)
             }else{
-                updateUI(with: constant.recipeUrl_searchText )
+                NetworkingManager.shared.performRequest(constant.recipeUrl_searchText)
                 }
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
@@ -49,13 +53,14 @@ class RecipeSearch_ViewController: UIViewController {
     @IBAction func lowSugarFilter_isPressed(_ sender: UIButton) {
         if searchBar.text != "" {
             handleSelected_Button(lowSugarFilter.tag)
+            // if the user write recipe name in search bar and press filter in this case constant.recipeUrl_searchText is empty
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText + constant.lowSugar_filter)
+                NetworkingManager.shared.performRequest(self.constant.recipeUrl_searchText + constant.lowSugar_filter)
             }else{
-                updateUI(with: constant.recipeUrl_searchText + constant.lowSugar_filter)
+                NetworkingManager.shared.performRequest(constant.recipeUrl_searchText + constant.lowSugar_filter)
             }
-            print("^^^^^^^^%%%%%%\(constant.recipeUrl_searchText + constant.lowSugar_filter)")
+
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
         }
@@ -63,14 +68,13 @@ class RecipeSearch_ViewController: UIViewController {
     @IBAction func ketoFilter_isPressed(_ sender: UIButton) {
         if searchBar.text != "" {
             handleSelected_Button(ketoFilter.tag)
+            // if the user write recipe name in search bar and press filter in this case constant.recipeUrl_searchText is empty
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText + constant.keto_filter)
+                NetworkingManager.shared.performRequest(self.constant.recipeUrl_searchText + constant.keto_filter)
             }else{
-                updateUI(with: constant.recipeUrl_searchText + constant.keto_filter)
+                NetworkingManager.shared.performRequest(constant.recipeUrl_searchText + constant.keto_filter)
             }
-            print("^^^^^^^^%%%%%%\(constant.recipeUrl_searchText + constant.keto_filter)")
-
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
         }
@@ -78,11 +82,13 @@ class RecipeSearch_ViewController: UIViewController {
     @IBAction func vegan(_ sender: UIButton) {
         if searchBar.text != "" {
             handleSelected_Button(veganFilter.tag)
+            // if the user write recipe name in search bar and press filter in this case constant.recipeUrl_searchText is empty
             if constant.recipeUrl_searchText == ""{
                 constant.recipeUrl_searchText += constant.recipeURL + searchBar.text!
-                updateUI(with: self.constant.recipeUrl_searchText + constant.vegan_filter)
+                NetworkingManager.shared.performRequest(constant.recipeUrl_searchText + constant.vegan_filter)
+
             }else{
-                updateUI(with: constant.recipeUrl_searchText + constant.vegan_filter)
+                NetworkingManager.shared.performRequest(constant.recipeUrl_searchText + constant.vegan_filter)
             }
         }else{
             handleAlertMessage(constant.handleEmpty_searchBar)
@@ -124,7 +130,7 @@ extension RecipeSearch_ViewController: UITableViewDelegate, UITableViewDataSourc
         if indexPath.row == constant.recipeList.count - 1 {
             // to add to the recipesList without delete previous recipes in it
             constant.deleteOrNo = false
-            updateUI(with: constant.NextRecipesUrl)
+            NetworkingManager.shared.performRequest(constant.NextRecipesUrl)
             }
 
         return cell
@@ -142,30 +148,30 @@ extension RecipeSearch_ViewController: UITableViewDelegate, UITableViewDataSourc
 
 //MARK: - UISearchBarDelegate
 
-extension RecipeSearch_ViewController: UISearchBarDelegate{
+extension RecipeSearch_ViewController : UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if var searchVal = searchBar.text {
-//            constant.recipeList.removeAll()
-            // to remove selected filter
+            // to remove selected filter button
             handleSelected_Button(nil)
             // to remove space before text
             searchVal = searchVal.trimmingCharacters(in: .whitespacesAndNewlines)
             // handle empty search bar
             if searchVal.isEmpty {
                 handleAlertMessage(constant.handleEmpty_searchBar)
-                updateUI(with: nil)
                 searchBar.text = ""
                 }
                 else{
                     constant.recipeUrl_searchText = constant.recipeURL + searchVal
-                    updateUI(with: constant.recipeUrl_searchText)
+                    NetworkingManager.shared.performRequest(constant.recipeUrl_searchText)
                 }
             }
         }
+    
+    
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         do {
-            // to Make sure that only english letters & spaces are allowed to be inserted in the search bar
+            //only english letters & spaces are allowed to be inserted in the search bar
             if let searchVal = searchBar.text {
                 let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*", options: [])
                 if regex.firstMatch(in: searchVal, options: [], range: NSMakeRange(0, searchVal.count)) != nil {
@@ -189,25 +195,28 @@ extension RecipeSearch_ViewController: UISearchBarDelegate{
 
 //MARK: - Update UI
 
-extension RecipeSearch_ViewController {
+extension RecipeSearch_ViewController : NetworkManagerDelegate{
     
-    func updateUI(with Url : String?) {
+    func didUpdateRecipse(recipesData: RecipesData?) {
         DispatchQueue.main.async {
-            print("$#$#$#$#$#$#$#$\(self.constant.deleteOrNo)")
-            if let url = Url{
-                print("*********\(url)")
-                NetworkingManager.shared.performRequest(url)
-                if let error = self.constant.validateError{
-                    self.handleAlertMessage(error)
-                    self.constant.validateError = nil
+            if let recipesData = recipesData {
+                if Constants.shared.deleteOrNo {
+                    Constants.shared.recipeList = recipesData.hits
+                }else{
+                    Constants.shared.recipeList += recipesData.hits
+                    Constants.shared.deleteOrNo = true
                 }
+                Constants.shared.NextRecipesUrl = recipesData._links.next.href
             }
             self.tableView.reloadData()
         }
     }
+
+    
     func handleAlertMessage(_ reason:String) {
-        let alert = UIAlertController(title: "Warning", message: reason, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        
+        let alert = UIAlertController(title: "Warning!", message: reason, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true, completion: nil)
     }
 
@@ -215,34 +224,29 @@ extension RecipeSearch_ViewController {
         switch buttonTag{
         // 0 -> Tag of All filter button
         case 0:
-            print("ALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
             All_FilterButton.isSelected = true
             lowSugarFilter.isSelected = false
             ketoFilter.isSelected = false
             veganFilter.isSelected = false
         // 1 -> Tag of Low Sugar filter button
         case 1:
-            print("@@@@@@@@@@@@@@Low Sugar")
             All_FilterButton.isSelected = false
             lowSugarFilter.isSelected = true
             ketoFilter.isSelected = false
             veganFilter.isSelected = false
         // 2 -> Tag of ketofilter button
         case 2:
-            print("@@@@@@@@@@@@@@keto")
             All_FilterButton.isSelected = false
             lowSugarFilter.isSelected = false
             ketoFilter.isSelected = true
             veganFilter.isSelected = false
         // 3 -> Tag of vegan filter button
         case 3:
-            print("@@@@@@@@@@@@@@vegan")
             All_FilterButton.isSelected = false
             lowSugarFilter.isSelected = false
             ketoFilter.isSelected = false
             veganFilter.isSelected = true
         default:
-            print("@@@@@@@@@@@@@@nil")
             All_FilterButton.isSelected = false
             lowSugarFilter.isSelected = false
             ketoFilter.isSelected = false

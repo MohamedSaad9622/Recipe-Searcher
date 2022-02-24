@@ -10,8 +10,6 @@ import Foundation
 struct RecipesData : Codable {
     let hits : [Hit]
     let _links : Links
-//    let more : Bool
-//    let count : Int
 }
 struct Links : Codable {
     let next : Next

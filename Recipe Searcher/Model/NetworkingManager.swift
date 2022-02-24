@@ -10,29 +10,27 @@ import Alamofire
 import AlamofireImage
 import UIKit
 
+// used to send data to RecipesSearch_ViewController to update the ui
+protocol NetworkManagerDelegate {
+    func didUpdateRecipse(recipesData:RecipesData?)
+    func handleAlertMessage(_ reason:String)
+}
 
 class NetworkingManager {
     
     static let shared = NetworkingManager()
+    var delegate : NetworkManagerDelegate?
     
     public func performRequest(_ url:String) {
         
-        AF.request(url).validate(statusCode: 200..<600).responseDecodable(of: RecipesData.self) { response in
+        AF.request(url).validate().responseDecodable(of: RecipesData.self) { response in
             if let error = response.error {
-                print("Error in request data\(error)")
-                Constants.shared.validateError = "\(error)"
+                self.delegate?.handleAlertMessage(error.localizedDescription)
             }else{
                 let decoder = JSONDecoder()
                 do{
                     let recipesData = try decoder.decode(RecipesData.self, from: response.data!)
-                    if Constants.shared.deleteOrNo {
-                        Constants.shared.recipeList = recipesData.hits
-                    }else{
-                        Constants.shared.recipeList += recipesData.hits
-                        Constants.shared.deleteOrNo = true
-                    }
-                    Constants.shared.NextRecipesUrl = recipesData._links.next.href
-
+                    self.delegate?.didUpdateRecipse(recipesData: recipesData)
                 }catch{
                     print("Error in decode data\(error)")
                 }

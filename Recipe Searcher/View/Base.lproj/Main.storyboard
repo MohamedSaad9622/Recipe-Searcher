@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q2V-PA-J7x">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -14,7 +14,7 @@
             <objects>
                 <navigationController id="q2V-PA-J7x" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GR1-cT-Ona">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.12629426951287276" green="0.3627311629478378" blue="0.10145096251217582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,14 +33,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RecipeSearch_ViewController" customModule="Recipe_Searcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dtl-fx-G0h">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="44" y="44" width="808" height="370"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="9RO-cC-JtF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="808" height="50"/>
                                         <color key="backgroundColor" red="0.97680455450000003" green="0.95481186890000003" blue="0.2027786255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="BYi-BM-VGt"/>
@@ -48,7 +48,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="search" smartDashesType="no" smartQuotesType="no" textContentType="name"/>
                                     </searchBar>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3j-bQ-hLg">
-                                        <rect key="frame" x="0.0" y="53" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="53" width="808" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLz-pw-e0x">
                                                 <rect key="frame" x="0.0" y="0.0" width="537" height="50"/>
@@ -141,7 +141,7 @@
                                         </constraints>
                                     </scrollView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aki-ty-wdx">
-                                        <rect key="frame" x="0.0" y="106" width="414" height="702"/>
+                                        <rect key="frame" x="0.0" y="106" width="808" height="264"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <sections/>
                                     </tableView>
